@@ -1,15 +1,24 @@
-# Elysia with Bun runtime
+# Elysia Env
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
+## Installing
 ```bash
-bun create elysia ./elysia-example
+bun add elysia-env
 ```
 
-## Development
-To start the development server run:
-```bash
-bun run dev
-```
+Example code:
+```typescript
+const env = t.Object({
+  TOKEN: t.String(),
+});
 
-Open http://localhost:3000/ with your browser to see the result.
+declare module 'elysia' {
+  class Elysia {
+    public env: Static<typeof env>;
+  }
+}
+
+const app = new Elysia()
+  .decorate('env', envPlugin(env))
+  .get('/', ({ env }) => `Hello World ${env.TOKEN}`)
+  .listen(3000);
+```
