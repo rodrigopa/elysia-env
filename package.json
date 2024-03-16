@@ -1,15 +1,17 @@
 {
-  "name": "app",
-  "version": "1.0.50",
+  "name": "elysia-env",
+  "main": "src/index.ts",
+  "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch example/index.ts"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@sinclair/typebox": "^0.32.15",
+    "elysia": "latest",
+    "poetic": "^1.7.0"
   },
   "devDependencies": {
     "bun-types": "latest"
-  },
-  "module": "src/index.js"
+  }
 }
