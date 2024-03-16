@@ -1,16 +1,9 @@
 import { Elysia, t } from 'elysia';
 import { envPlugin } from '../src';
-import type { Static } from '@sinclair/typebox';
 
 const env = t.Object({
   TOKEN: t.Numeric(),
 });
-
-declare module 'elysia' {
-  class Elysia {
-    public env: Static<typeof env>;
-  }
-}
 
 const app = new Elysia()
   .decorate('env', envPlugin(env))
